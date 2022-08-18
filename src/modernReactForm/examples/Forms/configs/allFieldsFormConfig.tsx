@@ -42,7 +42,7 @@ const allFieldsFormConfig: MFTypes.Config = {
 			fieldType: 'text',
 			component: TextInput,
 			fieldData: text,
-			/*schema(fields, value) {
+			schema(fields, value) {
 				return checkTextField(() => {
 					yup.string()
 						.required('Обязательное поле')
@@ -50,7 +50,7 @@ const allFieldsFormConfig: MFTypes.Config = {
 						.max(8, 'Максимум можно использовать 8 символов')
 						.validateSync(value)
 				})
-			}*/
+			}
 		},
 		textarea: {
 			fieldType: 'text',
@@ -117,7 +117,6 @@ const allFieldsFormConfig: MFTypes.Config = {
 			}, 1000)
 		})
 	},
-	// Настройки формы
 	settings: {
 		checkBeforeSubmit: 'onBlur', // До первой отправки при потери фокуса
 		checkAfterSubmit: 'onChange', // После первой отправки при вводе символов
@@ -207,7 +206,6 @@ function checkTextField(fn: Function): string | null {
 		
 		return { status: 'success' }
 	},
-	// Когда проверять форму
 	settings: {
 		checkBeforeSubmit: 'onBlur', // До первой отправки при потери фокуса
 		checkAfterSubmit: 'onChange', // После первой отправки при вводе символов
@@ -275,57 +273,4 @@ function checkTextField(fn: Function): string | null {
 
 
 
-/*
-const formConfig: MFTypes.Config = {
-	fields: {
-		name: {
-			fieldType: 'text',
-			component: TextInput,
-			fieldData: {},
-			schema(fields, value) {
-				if (value.length < 3) return 'Имя должно быть длиннее двух символов'
-				else if (value.length > 20) return 'Имя не должно быть длиннее 20 символов'
-				return null
-			}
-		},
-		gender: {
-			fieldType: 'radio',
-			component: FieldGroup,
-			fieldData: {},
-			inputs: [
-				{ label: 'Без ответа', value: 'without-answer' },
-				{ label: 'Мужчина', value: 'man' },
-				{ label: 'Женщина', value: 'woman' },
-			],
-		},
-		country: {
-			fieldType: 'select',
-			component: Select,
-			fieldData: {},
-			options: [
-				{ value: 'rus', label: 'Россия' },
-				{ value: 'ukr', label: 'Украина' },
-				{ value: 'bel', label: 'Беларусь' },
-			],
-		},
-		legal: {
-			fieldType: 'checkbox',
-			component: FieldGroup,
-			fieldData: {},
-			inputs: [
-				{ label: 'Принятие правил сервиса', value: 'acceptRules' },
-				{ label: 'Ценовая политика', value: 'pricesPolicy' },
-			],
-		},
-		getNews: {
-			fieldType: 'toggle',
-			component: Toggle,
-			fieldData: {},
-			value: 'toggle',
-			
-		},
-	},
-	async requestFn(...) {...},
-	// Когда проверять форму
-	settings: {...},
-}*/
+
