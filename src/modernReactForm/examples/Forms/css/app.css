@@ -1,0 +1,21 @@
+:root {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    padding: 20px;
+}
+
+
+.forms {
+    color: rgb(30, 30, 30);
+}
