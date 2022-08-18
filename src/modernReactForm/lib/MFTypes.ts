@@ -7,7 +7,7 @@ namespace MFTypes {
 		// Конфигурация полей формы
 		fields: ConfigFields
 		// Объект с настройками когда следует проверять поля формы
-		formSettings?: FormSettings
+		settings?: FormSettings
 		// Обработчик отправки формы
 		requestFn: (readyFieldValues: ReadyFieldsValues) => Promise<RequestFnReturn>
 	}

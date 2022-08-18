@@ -17,7 +17,7 @@ export default function fieldBlurHandler(
 	stateFields: MFTypes.StateFields,
 	setStateFields: MFTypes.SetStateFields,
 	formConfig: MFTypes.Config,
-	formSettings: MFTypes.FormSettings,
+	settings: MFTypes.FormSettings,
 	submitCounter: number,
 	setSubmitCounter: MFTypes.SetSubmitCounter,
 	setFormHasErrors: MFTypes.SetFormHasErrors,
@@ -28,7 +28,7 @@ export default function fieldBlurHandler(
 		return function (e: React.BaseSyntheticEvent) {
 			
 			// Если следует проверить поле и показать/скрыть ошибку...
-			if (submitCounter === 0 && formSettings.checkBeforeSubmit == 'onBlur' || submitCounter > 0 && formSettings.checkAfterSubmit == 'onBlur') {
+			if (submitCounter === 0 && settings.checkBeforeSubmit == 'onBlur' || submitCounter > 0 && settings.checkAfterSubmit == 'onBlur') {
 				// Имя поля
 				const fieldName = e.target.name
 				
@@ -52,7 +52,7 @@ export default function fieldBlurHandler(
 			setSubmitStatus('waiting')
 			
 			// Если предписано отправлять форму при потере полем фокуса...
-			if (formSettings.sendFormOnFieldBlur) {
+			if (settings.sendFormOnFieldBlur) {
 				sendForm(
 					stateFields,
 					setStateFields,
@@ -61,7 +61,7 @@ export default function fieldBlurHandler(
 					setSubmitCounter,
 					setFormHasErrors,
 					setCommonError,
-					formSettings,
+					settings,
 					setSubmitStatus
 				)
 			}

@@ -17,7 +17,7 @@ export default function fieldChangeHandler(
 	stateFields: MFTypes.StateFields, // Fields data from Store
 	setStateFields: MFTypes.SetStateFields, // Fields data setting function
 	formConfig: MFTypes.Config,
-	formSettings: MFTypes.FormSettings,
+	settings: MFTypes.FormSettings,
 	submitCounter: number,
 	setSubmitCounter: MFTypes.SetSubmitCounter,
 	setFormHasErrors: MFTypes.SetFormHasErrors,
@@ -69,7 +69,7 @@ export default function fieldChangeHandler(
 			const newStateFields: MFTypes.StateFields = { ...stateFields, [fieldName]: newFieldState }
 			
 			// Если следует проверить поле и показать/скрыть ошибку...
-			if (submitCounter === 0 && formSettings.checkBeforeSubmit === 'onChange' || submitCounter > 0 && formSettings.checkAfterSubmit === 'onChange') {
+			if (submitCounter === 0 && settings.checkBeforeSubmit === 'onChange' || submitCounter > 0 && settings.checkAfterSubmit === 'onChange') {
 				// Получить объекта состояния поля с установленной или убранной ошибкой
 				newFieldState.error = getErrorOfField(stateFields, newFieldState, fieldConfig)
 				
@@ -83,7 +83,7 @@ export default function fieldChangeHandler(
 			setSubmitStatus('waiting')
 			
 			// Если предписано отправлять форму при изменении значения поля...
-			if (formSettings.sendFormOnFieldBlur) {
+			if (settings.sendFormOnFieldBlur) {
 				sendForm(
 					newStateFields,
 					setStateFields,
@@ -92,7 +92,7 @@ export default function fieldChangeHandler(
 					setSubmitCounter,
 					setFormHasErrors,
 					setCommonError,
-					formSettings,
+					settings,
 					setSubmitStatus
 				)
 			}

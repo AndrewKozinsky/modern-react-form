@@ -6,7 +6,7 @@ import { createFieldComps } from './components/createFieldComps'
  * Хук возвращает объект с деталями для составления статьи
  * @param {Object} formConfig — объект настройки формы
  */
-export default function index(formConfig: MFTypes.Config) {
+export default function useGetModernForm(formConfig: MFTypes.Config) {
 	// Получения хранилищ и обработчиков используемых в форме
 	const formState = useFormState(formConfig)
 	

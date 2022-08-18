@@ -3,8 +3,17 @@
   "version": "0.1.0",
   "private": false,
   "description": "Modern react form based on hooks and division of responsibility",
-  "main": "index.tsx",
+  "main": "./src/modernReactForm/lib/index.tsx",
   "files": ["./src/modernReactForm/lib/**/*"],
+  "keywords": [
+    "react",
+    "form"
+  ],
+  "author": "Andrew Kozinsky",
+  "license": "ISC",
+  "bugs": {
+    "email": "andkozinsky@gmail.com"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",

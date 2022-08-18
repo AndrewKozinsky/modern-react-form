@@ -1,7 +1,7 @@
 import './css/reset.css'
 import './css/app.css'
 import allFieldsFormConfig from './configs/allFieldsFormConfig'
-import index from '../../lib/useGetModernForm'
+import useGetModernForm from '../../lib'
 import Button from '../formElements/Button/Button'
 
 export default function Forms() {
@@ -20,7 +20,7 @@ function AllFieldsForm() {
 		formHasErrors,
 		commonError,
 		submitStatus
-	} = index(allFieldsFormConfig)
+	} = useGetModernForm(allFieldsFormConfig)
 	
 	return (
 		<>
@@ -37,5 +37,4 @@ function AllFieldsForm() {
 			{commonError && <p>{commonError}</p>}
 		</>
 	)
-	
 }

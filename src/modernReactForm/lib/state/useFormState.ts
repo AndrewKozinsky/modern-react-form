@@ -27,22 +27,22 @@ export default function useFormState(formConfig: MFTypes.Config): MFTypes.State 
 	const [submitStatus, setSubmitStatus] = useState<MFTypes.SubmitStatus>('waiting')
 	
 	// Настройки проверки правильности полей формы
-	const formSettings = useMemo(getFormSettings(formConfig.formSettings), [])
+	const settings = useMemo(getFormSettings(formConfig.settings), [])
 	
 	// Обработчик изменения поля формы
 	const onChangeFn: MFTypes.OnChangeFn = fieldChangeHandler(
-		fields, setFields, formConfig , formSettings, submitCounter, setSubmitCounter, setFormHasErrors, setCommonError, setSubmitStatus
+		fields, setFields, formConfig , settings, submitCounter, setSubmitCounter, setFormHasErrors, setCommonError, setSubmitStatus
 	)
 	
 	// Обработчик потери фокуса поля формы
 	const onBlurFn: MFTypes.OnBlurFn = fieldBlurHandler(
-		fields, setFields, formConfig, formSettings, submitCounter, setSubmitCounter, setFormHasErrors, setCommonError, setSubmitStatus
+		fields, setFields, formConfig, settings, submitCounter, setSubmitCounter, setFormHasErrors, setCommonError, setSubmitStatus
 	)
 	
 	// Обработчик отправки формы
 	const onSubmitFn: MFTypes.onSubmitFn = useCallback(formSubmitHandler(
-		fields, setFields, formConfig, submitCounter, setSubmitCounter, setFormHasErrors, setCommonError, formSettings, setSubmitStatus
-	), [fields, setFields, formConfig, submitCounter, formSettings])
+		fields, setFields, formConfig, submitCounter, setSubmitCounter, setFormHasErrors, setCommonError, settings, setSubmitStatus
+	), [fields, setFields, formConfig, submitCounter, settings])
 	
 	return {
 		fields,

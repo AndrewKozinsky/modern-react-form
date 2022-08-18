@@ -13,7 +13,7 @@ import disableFields, { clearFields } from '../state/disableFields'
  * @param {Function} setSubmitCounter — функция устанавливающая количество отправок формы
  * @param {Function} setFormHasErrors — функция обновляющая значение флага содержит ли форма ошибки
  * @param {Function} setCommonError — функция обновляющая значение общей ошибки формы
- * @param {Object} formSettings — объект с настройками формы
+ * @param {Object} settings — объект с настройками формы
  * @param {Function} setSubmitStatus — функция обновляющая значение статуса отправки формы
  */
 export default function formSubmitHandler(
@@ -24,7 +24,7 @@ export default function formSubmitHandler(
 	setSubmitCounter: MFTypes.SetSubmitCounter,
 	setFormHasErrors: MFTypes.SetFormHasErrors,
 	setCommonError: MFTypes.SetCommonError,
-	formSettings: MFTypes.FormSettings,
+	settings: MFTypes.FormSettings,
 	setSubmitStatus: MFTypes.SetSubmitStatus,
 ) {
 	return function (e: React.SyntheticEvent) {
@@ -38,7 +38,7 @@ export default function formSubmitHandler(
 			setSubmitCounter,
 			setFormHasErrors,
 			setCommonError,
-			formSettings,
+			settings,
 			setSubmitStatus
 		)
 	}
@@ -54,7 +54,7 @@ export default function formSubmitHandler(
  * @param {Function} setSubmitCounter — функция устанавливающая количество отправок формы
  * @param {Function} setFormHasErrors — функция обновляющая значение флага содержит ли форма ошибки
  * @param {Function} setCommonError — функция обновляющая значение общей ошибки формы
- * @param {Object} formSettings — объект с настройками формы
+ * @param {Object} settings — объект с настройками формы
  * @param {Function} setSubmitStatus — функция обновляющая значение статуса отправки формы
  */
 export async function sendForm(
@@ -65,7 +65,7 @@ export async function sendForm(
 	setSubmitCounter: MFTypes.SetSubmitCounter,
 	setFormHasErrors: MFTypes.SetFormHasErrors,
 	setCommonError: MFTypes.SetCommonError,
-	formSettings: MFTypes.FormSettings,
+	settings: MFTypes.FormSettings,
 	setSubmitStatus: MFTypes.SetSubmitStatus,
 ) {
 	// Увеличить счётчик отправок формы
@@ -86,8 +86,8 @@ export async function sendForm(
 	const readyFieldValues = getReadyFieldsValues(stateFields)
 	
 	// Настройки блокировки и очистки полей формы до и после отправки...
-	const disableFieldsOption = formSettings.disableFields
-	const clearAfterSubmit = formSettings.clearFieldsAfterSubmit
+	const disableFieldsOption = settings.disableFields
+	const clearAfterSubmit = settings.clearFieldsAfterSubmit
 	
 	// Если нужно заблокировать поля при отправке...
 	if (disableFieldsOption == 'whileSubmit' || disableFieldsOption == 'whileAndAfterSubmit') {

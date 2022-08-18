@@ -117,8 +117,8 @@ const allFieldsFormConfig: MFTypes.Config = {
 			}, 1000)
 		})
 	},
-	// Когда проверять форму
-	formSettings: {
+	// Настройки формы
+	settings: {
 		checkBeforeSubmit: 'onBlur', // До первой отправки при потери фокуса
 		checkAfterSubmit: 'onChange', // После первой отправки при вводе символов
 		sendFormOnFieldBlur: true,
@@ -208,7 +208,7 @@ function checkTextField(fn: Function): string | null {
 		return { status: 'success' }
 	},
 	// Когда проверять форму
-	formSettings: {
+	settings: {
 		checkBeforeSubmit: 'onBlur', // До первой отправки при потери фокуса
 		checkAfterSubmit: 'onChange', // После первой отправки при вводе символов
 		sendFormOnFieldBlur: true,
@@ -270,7 +270,7 @@ function checkTextField(fn: Function): string | null {
 	},
 	async requestFn(...) {...},
 	// Когда проверять форму
-	formSettings: {...},
+	settings: {...},
 }*/
 
 
@@ -327,5 +327,5 @@ const formConfig: MFTypes.Config = {
 	},
 	async requestFn(...) {...},
 	// Когда проверять форму
-	formSettings: {...},
+	settings: {...},
 }*/
