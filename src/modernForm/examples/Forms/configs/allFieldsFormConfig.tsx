@@ -1,47 +1,12 @@
 import * as yup from 'yup'
 import MFTypes from '../../../lib/MFTypes'
-import FieldGroup, { FieldGroupPropType } from '../../formElements/FieldGroup/FieldGroup'
-import Select, { SelectPropType } from '../../formElements/Select/Select'
-import TextInput, { TextInputPropType } from '../../formElements/TextInput/TextInput'
-import Toggle, { TogglePropType } from '../../formElements/Toggle/Toggle'
 
-// Дополнительные параметры передаваемые в компонент текстового поля
-const text: MFTypes.TextFieldData<TextInputPropType> = {
-	label: 'text label',
-	inputType: 'text'
-}
-// Дополнительные параметры передаваемые в компонент текстового поля
-const textarea: MFTypes.TextFieldData<TextInputPropType> = {
-	label: 'textarea label',
-	inputType: 'textarea',
-	rows: 10
-}
-// Дополнительные параметры передаваемые в компонент группы флагов
-const check: MFTypes.CheckFieldData<FieldGroupPropType> = {
-	label: 'Checkboxes label',
-	inputType: 'checkbox',
-}
-// Дополнительные параметры передаваемые в компонент группы переключателей
-const radio: MFTypes.RadioFieldData<FieldGroupPropType> = {
-	label: 'Radios label',
-	inputType: 'radio'
-}
-// Дополнительные параметры передаваемые в компонент тумлера
-const toggle: MFTypes.ToggleFieldData<TogglePropType> = {
-	label: 'toggle'
-}
-// Дополнительные параметры передаваемые в компонент выпадающего списка
-const select: MFTypes.SelectFieldData<SelectPropType> = {
-	label: 'select label',
-}
 
 /** Конфигурация формы */
 const allFieldsFormConfig: MFTypes.Config = {
 	fields: {
 		text: {
 			fieldType: 'text',
-			component: TextInput,
-			fieldData: text,
 			schema(fields, value) {
 				return checkTextField(() => {
 					yup.string()
@@ -54,8 +19,6 @@ const allFieldsFormConfig: MFTypes.Config = {
 		},
 		textarea: {
 			fieldType: 'text',
-			component: TextInput,
-			fieldData: textarea,
 			schema(fields, value) {
 				return checkTextField(() => {
 					yup.string()
@@ -73,8 +36,6 @@ const allFieldsFormConfig: MFTypes.Config = {
 				{ label: 'Два', value: 'two' },
 				{ label: 'Три', value: 'three' },
 			],
-			component: FieldGroup,
-			fieldData: check,
 			schema(fields, valuesArr) {
 				if (Array.isArray(valuesArr)) {
 					return valuesArr.length ? null : 'Нужно выбрать хотя бы один элемент'
@@ -90,14 +51,10 @@ const allFieldsFormConfig: MFTypes.Config = {
 				{ label: 'Два', value: 'two' },
 				{ label: 'Три', value: 'three' },
 			],
-			component: FieldGroup,
-			fieldData: radio
 		},
 		toggle: {
 			fieldType: 'toggle',
 			value: 'toggle',
-			component: Toggle,
-			fieldData: toggle
 		},
 		select: {
 			fieldType: 'select',
@@ -105,8 +62,6 @@ const allFieldsFormConfig: MFTypes.Config = {
 				{ value: 'one', label: 'Один' },
 				{ value: 'two', label: 'Два' }
 			],
-			component: Select,
-			fieldData: select
 		},
 	},
 	async requestFn(readyFieldValues) {
@@ -118,9 +73,9 @@ const allFieldsFormConfig: MFTypes.Config = {
 		})
 	},
 	settings: {
-		checkBeforeSubmit: 'onBlur', // До первой отправки при потери фокуса
-		checkAfterSubmit: 'onChange', // После первой отправки при вводе символов
-		sendFormOnFieldBlur: true,
+		// checkBeforeSubmit: 'onBlur', // До первой отправки при потери фокуса
+		// checkAfterSubmit: 'onChange', // После первой отправки при вводе символов
+		// sendFormOnFieldBlur: true,
 	},
 }
 
@@ -270,7 +225,3 @@ function checkTextField(fn: Function): string | null {
 	// Когда проверять форму
 	settings: {...},
 }*/
-
-
-
-

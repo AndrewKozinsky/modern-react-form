@@ -48,9 +48,6 @@ export default function fieldBlurHandler(
 				setFormHasErrorsFlag(stateFields, formConfig, setFormHasErrors)
 			}
 			
-			// Поставить флаг, что форма ожидает отправки
-			setSubmitStatus('waiting')
-			
 			// Если предписано отправлять форму при потере полем фокуса...
 			if (settings.sendFormOnFieldBlur) {
 				sendForm(
@@ -68,3 +65,4 @@ export default function fieldBlurHandler(
 		}
 	}
 }
+

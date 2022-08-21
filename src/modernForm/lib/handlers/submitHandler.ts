@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import MFTypes from '../MFTypes'
 import getReadyFieldsValues from '../misc/getReadyFieldsValues'
 import { setErrorToAllTextFields } from '../state/validateFields'
@@ -157,3 +157,4 @@ export async function sendForm(
 		setSubmitStatus('error')
 	}
 }
+

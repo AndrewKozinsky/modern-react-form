@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": false,
   "description": "Modern react form based on hooks and division of responsibility",
-  "main": "./src/modernReactForm/lib/index.tsx",
-  "files": ["./src/modernReactForm/lib/**/*"],
+  "main": "src/modernForm/lib/index.tsx",
+  "files": [
+      "src/modernForm/lib/**/*"
+  ],
   "keywords": [
     "react",
     "form"

@@ -1,6 +1,6 @@
-import Forms from '../modernReactForm/examples/Forms'
+import Forms from '../modernForm/examples/Forms/Forms'
 
 
 export default function App() {
-	return <Forms />
+	return <div><Forms /></div>
 }

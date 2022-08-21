@@ -1,4 +1,4 @@
-import MFTypes, {FieldGroupInputData} from '../MFTypes'
+import MFTypes from '../MFTypes'
 
 /**
  * Функция формирующая объект с состоянием полей на основе начальной конфигурации
@@ -71,7 +71,7 @@ export default function getInitialFieldsState(formConfig: MFTypes.Config): MFTyp
 }
 
 /**
- * Функция формирует и возвращает массив флагов
+ * Функция формирует и возвращает массив флагов или переключателей
  * @param {Array} groupInputs — массив флагов
  */
 function getInputs(groupInputs: MFTypes.FieldGroupInputData[]): MFTypes.StateFieldInputItem[] {

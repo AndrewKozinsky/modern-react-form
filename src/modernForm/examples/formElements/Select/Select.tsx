@@ -1,17 +1,18 @@
 import Label from '../Label/Label'
 import { OptionsType } from './SelectTypes'
 import { getOptions } from './Select-func'
+import MFTypes from '../../../lib/MFTypes'
 
 
-export type SelectPropType = {
+export type SelectPropType = MFTypes.SelectCompProps & {
 	label?: string // Подпись выше выпадающего списка
-	mName: string // Имя выпадающего списка
-	mValue: string // Выбранное значение выпадающего списка
-	mError?: null | string // Текст ошибки
-	mDisabled: boolean // Выбранное значение выпадающего списка
-	mOptions: OptionsType // Массив для генерации тегов <option>
-	mOnChange: any, // Обработчик изменения поля
-	mOnBlur?: any // Обработчик потери фокуса полем
+	// mName: string // Имя выпадающего списка
+	// mValue: string // Выбранное значение выпадающего списка
+	// mError?: null | string // Текст ошибки
+	// mDisabled: boolean // Выбранное значение выпадающего списка
+	// mOptions: OptionsType // Массив для генерации тегов <option>
+	// mOnChange: any, // Обработчик изменения поля
+	// mOnBlur?: any // Обработчик потери фокуса полем
 }
 
 /** Компонент выпадающего списка */

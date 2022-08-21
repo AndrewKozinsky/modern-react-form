@@ -4,8 +4,8 @@ import MFTypes from '../MFTypes'
  * Функция проверяет значение поля с помощью переданной проверяющей функции.
  * И в зависимости от проверки возвращает или null, если ошибки нет, или текст ошибки.
  * @param {Object} fieldsState — объект состояния полей формы
- * @param {Object} textFieldState — объект состояния текстового поля формы
- * @param {Object} textFieldConfig — конфигурация текстового поля формы
+ * @param {Object} fieldState — объект состояния поля формы
+ * @param {Object} fieldConfig — конфигурация поля формы
  */
 export function getErrorOfField(
 	fieldsState: MFTypes.StateFields,

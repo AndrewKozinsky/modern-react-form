@@ -1,13 +1,14 @@
+import MFTypes from '../../../lib/MFTypes'
 
-export type TogglePropType = {
+export type TogglePropType = MFTypes.ToggleCompProps & {
 	label?: string // Подпись флага
-	mName: string // Имя группы флагов
-	mValue: string // Значение флага
-	mChecked?: boolean // Отмечено ли поле
-	mError?: null | string // Текст ошибки
-	mDisabled?: boolean // Заблокировано ли поле
-	mOnChange: any // Обработчик выбора пункта
-	mOnBlur?: any, // Обработчик потерей полем фокуса
+	// mName: string // Имя группы флагов
+	// mValue: string // Значение флага
+	// mChecked?: boolean // Отмечено ли поле
+	// mError?: null | string // Текст ошибки
+	// mDisabled?: boolean // Заблокировано ли поле
+	// mOnChange: any // Обработчик выбора пункта
+	// mOnBlur?: any, // Обработчик потерей полем фокуса
 }
 
 /** Компонент тумблера для формы */

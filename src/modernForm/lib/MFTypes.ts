@@ -2,6 +2,8 @@ import React from 'react'
 
 // Все типы используемые ModernForm
 namespace MFTypes {
+	// КОНФИГУРАЦИЯ ==========================================
+	
 	// Объект конфигурации
 	export type Config = {
 		// Конфигурация полей формы
@@ -25,10 +27,6 @@ namespace MFTypes {
 		initialValue?: string
 		// Функция проверки поля
 		schema?: FieldSchema<string>
-		// Функция-компонент поля формы
-		component: Function
-		// Прочие параметры передаваемые в компонент
-		fieldData: Object
 	}
 	
 	// Передаваемые настройки группы флагов
@@ -39,10 +37,6 @@ namespace MFTypes {
 		schema?: FieldSchema<string[]>
 		// Массив объектов с данными о флагах
 		inputs: FieldGroupInputData[]
-		// Функция-компонент поля формы
-		component: Function
-		// Прочие параметры передаваемые в компонент
-		fieldData: Object
 	}
 	
 	// Передаваемые настройки группы переключателей
@@ -53,10 +47,6 @@ namespace MFTypes {
 		schema?: FieldSchema<string>
 		// Массив объектов с данными о переключателях
 		inputs: FieldGroupInputData[]
-		// Функция-компонент поля формы
-		component: Function
-		// Прочие параметры передаваемые в компонент
-		fieldData: Object
 	}
 	
 	// Передаваемые настройки тумблера
@@ -69,10 +59,6 @@ namespace MFTypes {
 		schema?: FieldSchema<boolean>
 		// Отмечен ли флаг изначально?
 		initialChecked?: boolean
-		// Функция-компонент поля формы
-		component: Function
-		// Прочие параметры передаваемые в компонент
-		fieldData: Object
 	}
 	
 	// Передаваемые настройки выпадающего списка
@@ -85,10 +71,6 @@ namespace MFTypes {
 		schema?: FieldSchema<string>
 		// Массив объектов с данными о пунктах выпадающего списка
 		options: FieldGroupInputData[]
-		// Функция-компонент поля формы
-		component: Function
-		// Прочие параметры передаваемые в компонент
-		fieldData: Object
 	}
 	
 	// Объект с данными флага или переключателя
@@ -97,19 +79,9 @@ namespace MFTypes {
 		value: string,
 		checked?: boolean
 	}
-	// Объект с данными пункта выпадающего списка
-	// ПОХОЖЕ ЭТО НУЖНО УДАЛИТЬ!
-	// export type SelectOptionData = Omit<FieldGroupInputData, 'disabled'>
-	
-	// Типы данных, передаваемые в конкретный компоненты формы: текстовое поле, переключатели, выпадающий список и так далее
-	export type TextFieldData<T> = Omit<T, 'mName' | 'mValue' | 'mError' | 'mDisabled' | 'mOnChange' | 'mOnBlur'>
-	export type CheckFieldData<T> = Omit<T, 'mName' | 'mError' | 'mInputs' | 'mOnChange' | 'mOnBlur'>
-	export type RadioFieldData<T> = Omit<T, 'mName' | 'mError' | 'mInputs' | 'mOnChange' | 'mOnBlur'>
-	export type ToggleFieldData<T> = Omit<T, 'mName' | 'mValue' | 'mChecked' | 'mDisabled' | 'mOnChange' | 'mOnBlur'>
-	export type SelectFieldData<T> = Omit<T, 'mName' | 'mValue' | 'mOptions' | 'mDisabled' | 'mError' | 'mOnChange' | 'mOnBlur'>
 	
 	// Функция проверяющая поле на правильность
-	type FieldSchema<T extends FieldSchemaFieldValue> = (fields: StateFields, value: T) => null | string
+	type FieldSchema<T extends FieldSchemaFieldValue> = <T extends FieldSchemaFieldValue>(fields: StateFields, value: T) => null | string
 	export type FieldSchemaFieldValue = boolean | string | string[]
 	
 	// Обработчик изменения поля ввод
@@ -118,6 +90,7 @@ namespace MFTypes {
 	
 	// Обработчик потерей фокуса полем ввода
 	export type OnBlurFn = (fieldState: StateField, fieldConfig: ConfigField) => OnChangeInnerFn
+	export type OnBlurInnerFn = (e: React.BaseSyntheticEvent) => OnChangeInnerFn
 	
 	// Обработчик отправки формы
 	export type onSubmitFn = (e: React.SyntheticEvent) => void
@@ -156,14 +129,28 @@ namespace MFTypes {
 		sendFormOnFieldBlur?: boolean
 		// Отправлять ли форму после изменения поля (false по умолчанию)
 		sendFormOnFieldChange?: boolean
-		
 	}
 	type CheckFieldBeforeSubmit = 'never' | 'onChange' | 'onBlur' // never (не проверять), onChange (изменение значения поля), onBlur (потеря фокуса),
 	type CheckFieldAfterSubmit = 'onChange' | 'onBlur' // onChange (изменение значения поля), onBlur (потеря фокуса)
 	
 	
+	// ТИПЫ СВОЙСТВ ПЕРЕДАВАЕМЫХ КОМПОНЕНТАМ ==========================================
+	type BaseCompProps = {
+		mName: string
+		mDisabled: boolean
+		mError: null | string
+		mOnBlur: OnBlurInnerFn
+		mOnChange: OnChangeInnerFn
+	}
+	export type TextCompProps = BaseCompProps & { mValue: string }
+	export type FieldGroupCompProps = BaseCompProps & { mInputs: StateFieldInputItem[] }
+	export type ToggleCompProps = BaseCompProps & { mValue: string, mChecked: boolean }
+	export type SelectCompProps = BaseCompProps & { mValue: string, mOptions: StateSelectOption[] }
+	
+	
 	// СОСТОЯНИЕ ==========================================
 	
+	// Функция обновляющая объект состояния полей формы
 	export type SetStateFields = (fields: StateFields) => void
 	
 	// Объект с данными состояния полей формы. В key название поля, в значении данные поля
@@ -240,7 +227,7 @@ namespace MFTypes {
 	
 	
 	// Значения полей формы
-	export type ReadyFieldsValues = Record<string, null | boolean | string | string[]>
+	export type ReadyFieldsValues = Record<string, null | FieldSchemaFieldValue>
 	
 	// Тип общей ошибки от сервера и функция устанавливающая его в Хранилище
 	export type CommonError = null | string

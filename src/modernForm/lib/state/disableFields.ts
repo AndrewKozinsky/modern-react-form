@@ -51,4 +51,3 @@ export function clearFields(
 	
 	return newStateFields
 }
-

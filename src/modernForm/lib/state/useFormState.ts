@@ -1,5 +1,5 @@
-import MFTypes from '../MFTypes'
 import { useCallback, useMemo, useState } from 'react'
+import MFTypes from '../MFTypes'
 import getInitialFieldsState from './getInitialFieldsState'
 import fieldChangeHandler from '../handlers/fieldChangeHandler'
 import getFormSettings from './getFormSettings'
@@ -54,3 +54,4 @@ export default function useFormState(formConfig: MFTypes.Config): MFTypes.State 
 		submitStatus
 	}
 }
+

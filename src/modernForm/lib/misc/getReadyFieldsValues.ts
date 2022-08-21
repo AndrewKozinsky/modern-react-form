@@ -36,3 +36,4 @@ export default function getReadyFieldsValues(fields: MFTypes.StateFields): MFTyp
 
 	return fieldsValuesObj
 }
+

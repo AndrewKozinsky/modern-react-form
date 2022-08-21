@@ -1,16 +1,17 @@
 import Label from '../Label/Label'
 import Checkbox from '../Checkbox/Checkbox'
 import Radio from '../Radio/Radio'
+import MFTypes from '../../../lib/MFTypes'
 
-export type FieldGroupPropType = {
+export type FieldGroupPropType = MFTypes.FieldGroupCompProps & {
 	label?: string // Подпись группы переключателей или флагов
 	inputType: FieldGroupInputType // Тип: флаги или переключатели
-	mName: string // Имя группы переключателей или флагов
-	mInputs: FieldGroupInputDataType[] // Данные по флагам или переключателям
-	mError?: null | string // Текст ошибки
-	mDisabled?: boolean // Заблокировано ли поле
-	mOnChange: any, // Обработчик изменения поля
-	mOnBlur: any, // Обработчик потерей полем фокуса
+	// mName: string // Имя группы переключателей или флагов
+	// mInputs: FieldGroupInputDataType[] // Данные по флагам или переключателям
+	// mError?: null | string // Текст ошибки
+	// mDisabled?: boolean // Заблокировано ли поле
+	// mOnChange: any, // Обработчик изменения поля
+	// mOnBlur: any, // Обработчик потерей полем фокуса
 }
 
 export type FieldGroupInputType = 'radio' | 'checkbox'
