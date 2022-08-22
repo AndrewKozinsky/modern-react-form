@@ -155,6 +155,7 @@ namespace MFTypes {
 	
 	// Объект с данными состояния полей формы. В key название поля, в значении данные поля
 	export type StateFields = Record<string, StateField>
+	
 	// Объединённый тип состояния поля
 	export type StateField = StateTextField | StateCheckboxesField | StateRadiosField | StateToggleField | StateSelectField
 	
@@ -225,6 +226,8 @@ namespace MFTypes {
 	// Объект с данными пункта выпадающего списка
 	export type StateSelectOption = Omit<StateFieldInputItem, 'checked'>
 	
+	// Функция обновляет объект состояния любого поля
+	export type UpdateField = ( fieldName: string, newFieldData: StateField ) => void
 	
 	// Значения полей формы
 	export type ReadyFieldsValues = Record<string, null | FieldSchemaFieldValue>
@@ -243,6 +246,7 @@ namespace MFTypes {
 	
 	export type State = {
 		fields: StateFields
+		updateField: UpdateField
 		onChangeFn: OnChangeFn
 		onBlurFn: OnBlurFn
 		onSubmitFn: onSubmitFn
